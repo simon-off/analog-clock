@@ -27,8 +27,8 @@ hands[2].classList.add("hand__hour");
 function updateHands() {
   const time = new Date();
   hands[0].style.rotate = time.getSeconds() * 6 + "deg";
-  hands[1].style.rotate = time.getMinutes() * 6 + "deg";
-  hands[2].style.rotate = time.getHours() * 30 + "deg";
+  hands[1].style.rotate = time.getMinutes() * 6 + time.getSeconds() / 10 + "deg";
+  hands[2].style.rotate = (time.getHours() % 12) * 30 + time.getMinutes() / 2 + "deg";
 }
 
 updateHands();
