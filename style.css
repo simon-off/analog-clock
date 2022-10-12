@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
+
+/* Josh's Custom CSS Reset 
+https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Remove animations preference */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* MY STUFF */
+:root {
+  --color-light: #ddd;
+  --color-dark: #333;
+  --color-darker: #222;
+  --color-darkest: #111;
+  --color-bg: #1a1a1a;
+}
+
+* {
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  background-color: var(--color-bg);
+  display: grid;
+  place-items: center;
+}
+
+.clock {
+  /* Set with JS */
+  --clock-size: 0;
+
+  width: var(--clock-size);
+  aspect-ratio: 1/1;
+  position: relative;
+  border-radius: 50%;
+  background-color: var(--color-darker);
+  box-shadow: 0 0 48px rgba(0 0 0 / 0.15), 0 0 24px rgba(0 0 0 / 0.25), 0 0 6px rgba(0 0 0 / 0.5);
+
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  background-color: var(--color-dark);
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0 0 0 / 0.5);
+  outline: 1px solid var(--color-darkest);
+}
+
+.hand__hour {
+  background-color: hsl(150 35% 25%);
+  --width: 12px;
+  --height: 192px;
+}
+
+.hand__minute {
+  background-color: hsl(150 25% 25%);
+  --width: 8px;
+  --height: 192px;
+}
+
+.hand__second {
+  background-color: hsl(150 15% 25%);
+  --width: 4px;
+  --height: 192px;
+}
+
+.hand {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  border-radius: var(--width);
+  box-shadow: 0 0 4px rgba(0 0 0 / 0.5);
+  outline: 1px solid var(--color-darkest);
+  /* Truly cray cray css */
+  left: calc(var(--clock-size) / 2 - (var(--width) / 2));
+  top: calc(var(--clock-size) / 2 - (var(--height) / 2));
+  transform: translateY(calc(0px - var(--height) / 2));
+}
+
+.mark {
+  color: var(--color-light);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: var(--color-dark);
+  font-size: 0.75rem;
+  font-weight: bold;
+  box-shadow: 0 0 3px rgba(0 0 0 / 0.25);
+  outline: 1px solid var(--color-darkest);
+}
+
+.mark__hour {
+  aspect-ratio: 1/1;
+  width: 24px;
+  z-index: 1;
+}
+
+.mark__minute {
+  aspect-ratio: 1/1;
+  width: 8px;
+}
