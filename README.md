@@ -1,3 +1,3 @@
 # Analog clock
 
-Simple analog clock made with HTML, CSS and JS
+Simple analog clock made with HTML, CSS and JavaScript.

@@ -84,13 +84,19 @@ body {
 .clock {
   /* Set with JS */
   --clock-size: 0;
+  --c-rem: calc(var(--clock-size) / 32);
+  --c-px: calc(var(--c-rem) / 16);
 
   width: var(--clock-size);
   aspect-ratio: 1/1;
   position: relative;
   border-radius: 50%;
   background-color: var(--color-darker);
-  box-shadow: 0 0 48px rgba(0 0 0 / 0.15), 0 0 24px rgba(0 0 0 / 0.25), 0 0 6px rgba(0 0 0 / 0.5);
+  /* prettier-ignore */
+  box-shadow: 
+    0 0 calc(var(--c-rem) * 3) rgba(0 0 0 / 0.15),
+    0 0 calc(var(--c-rem) * 1.5) rgba(0 0 0 / 0.25),
+    0 0 calc(var(--c-rem) * 0.375) rgba(0 0 0 / 0.5);
 
   isolation: isolate;
   display: grid;
@@ -98,31 +104,31 @@ body {
 }
 
 .dot {
-  width: 24px;
-  height: 24px;
+  width: calc(var(--c-rem) * 1.5);
+  height: calc(var(--c-rem) * 1.5);
   background-color: var(--color-dark);
   z-index: 2;
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0 0 0 / 0.5);
-  outline: 1px solid var(--color-darkest);
+  box-shadow: 0 0 calc(var(--c-rem) * 0.5) rgba(0 0 0 / 0.5);
+  outline: var(--c-px) solid var(--color-darkest);
 }
 
 .hand__hour {
   background-color: hsl(150 35% 25%);
-  --width: 12px;
-  --height: 160px;
+  --width: calc(var(--c-rem) * 0.75);
+  --height: calc(var(--c-rem) * 11);
 }
 
 .hand__minute {
   background-color: hsl(150 25% 25%);
-  --width: 8px;
-  --height: 192px;
+  --width: calc(var(--c-rem) * 0.5);
+  --height: calc(var(--c-rem) * 12);
 }
 
 .hand__second {
   background-color: hsl(150 15% 25%);
-  --width: 4px;
-  --height: 192px;
+  --width: calc(var(--c-rem) * 0.25);
+  --height: calc(var(--c-rem) * 12);
   z-index: 1;
 }
 
@@ -131,8 +137,8 @@ body {
   height: var(--height);
   position: absolute;
   border-radius: var(--width);
-  box-shadow: 0 0 4px rgba(0 0 0 / 0.5);
-  outline: 1px solid var(--color-darkest);
+  box-shadow: 0 0 calc(var(--c-rem) * 0.25) rgba(0 0 0 / 0.5);
+  outline: var(--c-px) solid var(--color-darkest);
   /* Truly cray cray css */
   left: calc(var(--clock-size) / 2 - (var(--width) / 2));
   top: calc(var(--clock-size) / 2 - (var(--height) / 2));
@@ -146,19 +152,19 @@ body {
   place-items: center;
   border-radius: 50%;
   background-color: var(--color-dark);
-  font-size: 0.75rem;
+  font-size: calc(var(--c-rem) * 0.75);
   font-weight: bold;
-  box-shadow: 0 0 3px rgba(0 0 0 / 0.25);
-  outline: 1px solid var(--color-darkest);
+  box-shadow: 0 0 calc(var(--c-rem) * 0.1875) rgba(0 0 0 / 0.25);
+  outline: var(--c-px) solid var(--color-darkest);
 }
 
 .mark__hour {
+  width: calc(var(--c-rem) * 1.5);
   aspect-ratio: 1/1;
-  width: 24px;
   z-index: 1;
 }
 
 .mark__minute {
+  width: calc(var(--c-rem) * 0.5);
   aspect-ratio: 1/1;
-  width: 8px;
 }
