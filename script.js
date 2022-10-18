@@ -85,3 +85,9 @@ window.addEventListener("resize", () => {
   updateMarks(hourMarks);
   updateMarks(minuteMarks);
 });
+
+// Make sure the marks end up in the right place!
+window.addEventListener("DOMContentLoaded", () => {
+  updateMarks(hourMarks);
+  updateMarks(minuteMarks);
+});
